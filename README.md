@@ -8,6 +8,7 @@ An interactive hotel booking web portal built with Java Spring Boot backend and 
 
 - User authentication (login/logout) with JWT tokens
 - Hotel listing with booking and feedback submission
+- stripe based payment option
 - Booking confirmation and feedback stored in database
 - AI-powered ChatBox integrated using Spring AI and OpenAI API
 - Dynamic PDF generation and email notifications (backend)
