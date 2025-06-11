@@ -17,5 +17,13 @@ function App() {
       </Routes>
       <ChatBox />
     </Router>
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+<Router>
+  <Routes> ... </Routes>
+  <ChatBox />
+  <ToastContainer />
+</Router>
   );
 }
