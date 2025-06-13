@@ -1,0 +1,79 @@
+body {
+  background: #edf0f5;
+  color: #334155;
+}
+
+.navbar {
+  background: #334155 !important;
+}
+
+.navbar .navbar-brand {
+  color: #f1f5f9 !important;
+  font-size: 1.5rem;
+}
+
+.navbar .nav-item .nav-link {
+  color: #f1f5f9 !important;
+  margin-right: 1rem;
+}
+
+.container {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgb(0 0 0 / 0.1);
+  margin-bottom: 30px;
+}
+
+.container h1 {
+  color: #334155;
+  margin-bottom: 20px;
+}
+
+.container form input {
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+}
+
+.container form button {
+  padding: 10px 20px;
+  background: #334155;
+  color: #f1f5f9;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+
+.container form button:hover {
+  background: #1e293b;
+}
+
+ul.list-group .list-group-item {
+  background: #f8fafc;
+  border: none;
+  margin-bottom: 10px;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 1px 5px rgb(0 0 0 / 0.05);
+}
+
+ul.list-group .list-group-item a {
+  color: #334155;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+ul.list-group .list-group-item a:hover {
+  color: #1e293b;
+  font-weight: bold;
+}
+
+input#filter {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  margin-bottom: 20px;
+}
