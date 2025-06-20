@@ -1,64 +1,32 @@
-package com.hotel.gateway.dto;
+package com.hotel.gateway.repository;
 
-public class HotelSearchCriteria {
+import com.hotel.gateway.model.Hotel;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
-    private String location;
-    private int minPrice;
-    private int maxPrice;
-    private double minRating;
+import java.util.List;
 
-    // Default constructor
-    public HotelSearchCriteria() {
-    }
+public interface HotelRepository extends JpaRepository<Hotel, Long> {
 
-    // All-args constructor
-    public HotelSearchCriteria(String location, int minPrice, int maxPrice, double minRating) {
-        this.location = location;
-        this.minPrice = minPrice;
-        this.maxPrice = maxPrice;
-        this.minRating = minRating;
-    }
+    // Find cheapest hotels
+    List<Hotel> findTop3ByOrderByPriceAsc();
 
-    // Getters and Setters
-    public String getLocation() {
-        return location;
-    }
+    // Find top-rated hotels
+    List<Hotel> findTop3ByOrderByRatingDesc();
 
-    public void setLocation(String location) {
-        this.location = location;
-    }
+    // Find by location
+    List<Hotel> findByLocationContainingIgnoreCase(String location);
 
-    public int getMinPrice() {
-        return minPrice;
-    }
-
-    public void setMinPrice(int minPrice) {
-        this.minPrice = minPrice;
-    }
-
-    public int getMaxPrice() {
-        return maxPrice;
-    }
-
-    public void setMaxPrice(int maxPrice) {
-        this.maxPrice = maxPrice;
-    }
-
-    public double getMinRating() {
-        return minRating;
-    }
-
-    public void setMinRating(double minRating) {
-        this.minRating = minRating;
-    }
-
-    @Override
-    public String toString() {
-        return "HotelSearchCriteria{" +
-                "location='" + location + '\'' +
-                ", minPrice=" + minPrice +
-                ", maxPrice=" + maxPrice +
-                ", minRating=" + minRating +
-                '}';
-    }
+    // Find hotels matching custom search criteria
+    @Query("SELECT h FROM Hotel h " +
+           "WHERE (:location IS NULL OR LOWER(h.location) LIKE LOWER(CONCAT('%', :location, '%'))) " +
+           "AND (h.price BETWEEN :minPrice AND :maxPrice) " +
+           "AND (h.rating >= :minRating)")
+    List<Hotel> findByFilters(
+            @Param("location") String location,
+            @Param("minPrice") int minPrice,
+            @Param("maxPrice") int maxPrice,
+            @Param("minRating") double minRating
+    );
 }
